@@ -1,4 +1,5 @@
 @import "~styles/bootstrap_custom";
+@import "~styles/variables";
 
 $sidebar-width: 180px;
 
@@ -43,5 +44,26 @@ $sidebar-width: 180px;
     padding-top: 41px;
 
     font-size: 9pt;
+  }
+
+  .pg-content {
+    display: flex;
+    width: 100%;
+  }
+
+  ::ng-deep .pg-title {
+    background-color: white;
+    height: 64px;
+
+    // title
+    span.title {
+      font-size: 18pt;
+      color: $dark;
+      margin-left: $padding-main;
+    }
+  }
+
+  ::ng-deep .dv-content {
+    margin: $padding-main;
   }
 }
