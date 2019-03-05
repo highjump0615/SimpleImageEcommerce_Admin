@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import "sass/conf/conf";
+
+// override bootstrap theme
+$primary: #369f5c;
+
+@import "~bootstrap/scss/bootstrap";
+
+
 
 .hj-container {
   display: flex;
@@ -23,7 +29,7 @@
 }
 
 .bg-grad {
-  background: linear-gradient(#45c38a, #80e8a3);
+  background: linear-gradient($primary, #80e8a3);
 }
 
 
@@ -31,6 +37,4 @@ html,
 body {
   height: 100%;
   margin: 0;
-  font-family: 'myriad';
-  background-color: $light;
 }
