@@ -2,6 +2,7 @@ import {SidebarMenuItemComponent} from './sidebar-menu-item/sidebar-menu-item.co
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 const COMPONENTS = [
   SidebarMenuItemComponent
@@ -10,7 +11,8 @@ const COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    AngularFontAwesomeModule
   ],
   declarations: [
     ...COMPONENTS
