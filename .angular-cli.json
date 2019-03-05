@@ -21,11 +21,13 @@
       "styles": [
         "../node_modules/bootstrap/scss/bootstrap.scss",
         "../node_modules/font-awesome/scss/font-awesome.scss",
+        "../node_modules/datatables.net-dt/css/jquery.dataTables.css",
         "styles/styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/datatables.net-dt/js/dataTables.dataTables.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
