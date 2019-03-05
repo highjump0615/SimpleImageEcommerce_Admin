@@ -1,0 +1,53 @@
+<div class="hj-container flex-c-row bg-grad content-center">
+
+  <div class="flex-col">
+    <!-- logo -->
+    <img class="logo" src="../../../assets/imgs/logo.png" />
+
+    <!-- sign in form-->
+    <form
+      ngNativeValidate
+      (ngSubmit)="onSignin()">
+
+      <!-- email-->
+      <div class="flex-c-row input-item signin-input">
+        <img
+          src="../assets/imgs/signin/signin_email.png"
+          style="width: 16px;" />
+        <input
+          type="email"
+          name="email"
+          required
+          class="form-control"
+          placeholder="Email">
+      </div>
+
+      <!-- password-->
+      <div class="flex-c-row input-item signin-input"
+           style="margin-top: 4px;">
+        <img
+          src="../assets/imgs/signin/signin_password.png"
+          style="width: 11px;" />
+        <input
+          type="password"
+          name="password"
+          required
+          class="form-control"
+          placeholder="Password">
+      </div>
+
+      <div class="notice-error">
+      </div>
+
+      <!-- buttons -->
+      <div class="button-wrapper nm-center">
+        <button
+          full
+          type="submit"
+          class="btn btn-light round"
+        >Let's Go!</button>
+      </div>
+    </form>
+  </div>
+
+</div>

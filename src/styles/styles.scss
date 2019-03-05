@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import "sass/conf/conf";
+
+.hj-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.flex-row {
+  display: flex;
+}
+.flex-c-row {
+  display: flex;
+  align-items: center;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.content-center {
+  justify-content: center;
+}
+
+.bg-grad {
+  background: linear-gradient(#45c38a, #80e8a3);
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'myriad';
+  background-color: $light;
+}
