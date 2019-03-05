@@ -1,0 +1,47 @@
+@import "~styles/bootstrap_custom";
+
+$sidebar-width: 180px;
+
+:host {
+  .page-top {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
+
+  nav {
+    background-color: $primary;
+  }
+
+  .al-sidebar {
+    width: $sidebar-width;
+    height: 100%;
+    padding-top: 41px;
+    left: 0;
+
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 0 10px #bbb;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    z-index: 1;
+  }
+
+  .al-main {
+    margin-left: $sidebar-width;
+    min-height: 500px;
+    position: relative;
+    padding-top: 41px;
+
+    font-size: 9pt;
+  }
+}

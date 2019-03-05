@@ -1,10 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-// override bootstrap theme
-$primary: #369f5c;
-
-@import "~bootstrap/scss/bootstrap";
-
+@import "bootstrap_custom";
 
 
 .hj-container {

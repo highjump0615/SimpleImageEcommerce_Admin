@@ -1,0 +1,17 @@
+<li>
+
+  <a [routerLink]="link"
+     routerLinkActive="selected"
+     class="flex-c-row"
+     (click)="onClick()">
+    <i *ngIf="icon"
+       class="icon"
+       [ngClass]="icon"></i>
+    <div class="caption"
+         [class.border-top]="topBorder"
+         [class.border-bottom]="bottomBorder">
+      <span>{{title}}</span>
+    </div>
+  </a>
+
+</li>
