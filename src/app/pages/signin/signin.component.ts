@@ -3,6 +3,7 @@ import {SpinnerOverlayService} from '../../services/spinner-overlay.service';
 import {AuthService} from '../../services/auth.service';
 import {BasePage} from '../base.page';
 import {MatDialog} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -15,6 +16,7 @@ export class SigninComponent extends BasePage implements OnInit {
   password = '';
 
   constructor(
+    public router: Router,
     private overlay: SpinnerOverlayService,
     private auth: AuthService,
     public dialog: MatDialog
@@ -33,13 +35,9 @@ export class SigninComponent extends BasePage implements OnInit {
     this.auth.signIn(
       this.email,
       this.password
-    ).then( (res) => {
-      console.log(res);
-
-      if (!res.user) {
-        this.overlay.hide();
-        return;
-      }
+    ).then( () => {
+      // go to home page
+      this.router.navigate(['home']);
 
       that.overlay.hide();
     }).catch((err) => {

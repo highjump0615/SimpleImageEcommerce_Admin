@@ -1,7 +1,7 @@
 <li>
 
   <a [routerLink]="link"
-     routerLinkActive="selected"
+     [routerLinkActive]="link ? 'selected' : ''"
      class="flex-c-row">
     <fa
       *ngIf="icon"

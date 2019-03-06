@@ -34,11 +34,11 @@
   <!-- log out -->
   <ul>
     <app-sidebar-menu-item
-      link="/logout"
       title="Log Out"
       icon="sign-out"
       [topBorder]="true"
-      [bottomBorder]="false">
+      [bottomBorder]="false"
+      (click)="onSignout()">
     </app-sidebar-menu-item>
   </ul>
 </aside>
