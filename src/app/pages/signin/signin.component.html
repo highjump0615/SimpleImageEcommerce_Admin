@@ -21,8 +21,10 @@
             type="email"
             class="form-control form-control-sm"
             id="ip-email"
+            name="email"
             required
-            placeholder="Enter email">
+            placeholder="Enter email"
+            [(ngModel)]="email">
         </div>
 
         <!-- password -->
@@ -35,8 +37,10 @@
             type="password"
             class="form-control form-control-sm"
             id="ip-password"
+            name="password"
             required
-            placeholder="Password">
+            placeholder="Password"
+            [(ngModel)]="password">
         </div>
 
         <button

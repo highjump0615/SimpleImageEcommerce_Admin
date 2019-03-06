@@ -11,7 +11,9 @@
     <div class="card">
       <div class="card-body">
 
-        <form (ngSubmit)="onSubmit()">
+        <form
+          ngNativeValidate
+          (ngSubmit)="onSubmit()">
 
           <!-- title -->
           <div class="form-group row">
