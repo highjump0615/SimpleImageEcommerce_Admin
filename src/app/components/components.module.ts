@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
+import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
 
 const COMPONENTS = [
   SidebarMenuItemComponent,
