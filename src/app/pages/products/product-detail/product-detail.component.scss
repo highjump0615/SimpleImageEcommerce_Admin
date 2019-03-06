@@ -1,0 +1,24 @@
+form {
+  width: 600px;
+}
+
+// photo
+::ng-deep app-image-uploader {
+  div {
+    color: gray;
+    line-height: 1.5;
+
+    font-size: 14pt;
+    i {
+      font-size: 17pt;
+      margin-right: 10px;
+    }
+  }
+
+  .dv-photo {
+    background: lightgrey;
+    width: 100% !important;
+    height: 280px !important;
+    border-radius: 0 !important;
+  }
+}

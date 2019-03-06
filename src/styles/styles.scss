@@ -28,6 +28,23 @@
   background: linear-gradient($primary, #80e8a3);
 }
 
+//
+// buttons
+//
+button[icon-only] {
+  padding: 0 !important;
+}
+
+[clear] {
+  border: 0;
+  background-color: transparent;
+
+  &:focus {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
 
 html,
 body {

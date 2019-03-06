@@ -1,0 +1,29 @@
+<input
+  type="file"
+  accept="image/*"
+  (change)="onFileSelected($event)"
+  #file />
+
+<div class="dv-photo">
+  <!-- button -->
+  <button
+    icon-only clear
+    type="button"
+    class="btn"
+    (click)="file.click()">
+
+    <ng-content *ngIf="!picture"></ng-content>
+
+    <img
+      *ngIf="picture; else default"
+      class="content"
+      [src]="picture" />
+
+    <!-- show default image only if content is empty -->
+    <ng-template
+      #default>
+      <img class="photo" *ngIf="defaultImg" [src]="defaultImg" />
+    </ng-template>
+  </button>
+
+</div>
