@@ -55,3 +55,18 @@ body {
   margin: 0;
   background-color: #f4f3f3;
 }
+
+.dv-loading {
+  height: 300px;
+}
+
+//
+// table
+//
+table.dataTable tbody td {
+  padding: 6px 8px;
+
+  a {
+    cursor: pointer;
+  }
+}

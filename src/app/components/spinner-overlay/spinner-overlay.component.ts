@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-spinner-overlay',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./spinner-overlay.component.scss']
 })
 export class SpinnerOverlayComponent implements OnInit {
+
+  @Input() fullScreen = true;
 
   constructor() { }
 

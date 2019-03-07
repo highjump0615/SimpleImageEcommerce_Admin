@@ -15,11 +15,12 @@ import {ErrorDialogComponent} from './components/dialogs/error-dialog/error-dial
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthGuard} from './guards/auth.guard';
 import {StorageServiceModule} from 'ngx-webstorage-service';
+import {ConfirmDialogComponent} from './components/dialogs/confirm-dialog/confirm-dialog.component';
 
 
 const COMPONENTS = [
-  SpinnerOverlayComponent,
-  ErrorDialogComponent
+  ErrorDialogComponent,
+  ConfirmDialogComponent
 ];
 
 @NgModule({
@@ -34,7 +35,6 @@ const COMPONENTS = [
     AppRoutingModule,
     ComponentsModule,
     OverlayModule,
-    MatProgressSpinnerModule,
     MatDialogModule,
     MatSnackBarModule,
     StorageServiceModule

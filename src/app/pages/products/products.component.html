@@ -19,19 +19,42 @@
           Add New Product
         </button>
 
+        <!-- loading -->
+        <div
+          class="dv-loading"
+          *ngIf="loading">
+          <app-spinner-overlay
+            [fullScreen]="false">
+          </app-spinner-overlay>
+        </div>
+
         <!-- table -->
-        <div class="table-responsive mt-3">
-          <table class="table table-bordered table-sm">
+        <div
+          [hidden]="loading"
+          class="table-responsive mt-3">
+          <table class="table table-bordered table-sm table-hover">
             <thead>
             <tr>
               <th>Title</th>
               <th>Description</th>
               <th>Price</th>
-              <th>Action</th>
+              <th></th>
             </tr>
             </thead>
             <tbody>
-
+            <tr
+              *ngFor="let p of products; let i = index"
+              (click)="onDetail(i)">
+              <td>{{p.title}}</td>
+              <td>{{p.desc}}</td>
+              <td>{{p.price}}</td>
+              <td>
+                <!-- delete button -->
+                <a (click)="onRemove($event, i)">
+                  <fa name="trash"></fa>
+                </a>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>

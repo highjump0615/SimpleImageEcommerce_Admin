@@ -100,6 +100,11 @@ export class BaseModel {
     return this.id === data.id;
   }
 
+  public delete() {
+    const db = this.getDatabaseRef();
+    db.remove();
+  }
+
   public clone(): any {
     const cloneObj = new (<any>this.constructor)(); // line fixed
     for (const attribut in this) {

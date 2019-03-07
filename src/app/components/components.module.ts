@@ -6,17 +6,21 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
 import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
+import {MatProgressSpinnerModule} from '@angular/material';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 
 const COMPONENTS = [
   SidebarMenuItemComponent,
-  ImageUploaderComponent
+  ImageUploaderComponent,
+  SpinnerOverlayComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     ...COMPONENTS

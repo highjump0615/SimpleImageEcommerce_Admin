@@ -1,0 +1,17 @@
+[mat-dialog-title] {
+  font-size: 13pt;
+  line-height: inherit;
+  margin-bottom: 14px;
+}
+
+[mat-dialog-content] {
+  font-size: 11pt;
+}
+
+[mat-dialog-actions] {
+  justify-content: flex-end;
+
+  button:not(:first-child) {
+    margin-left: 16px;
+  }
+}
