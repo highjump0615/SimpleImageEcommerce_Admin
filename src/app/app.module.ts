@@ -13,6 +13,8 @@ import {SpinnerOverlayService} from 'app/services/spinner-overlay.service';
 import {AuthService} from './services/auth.service';
 import {ErrorDialogComponent} from './components/dialogs/error-dialog/error-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AuthGuard} from './guards/auth.guard';
+import {StorageServiceModule} from 'ngx-webstorage-service';
 
 
 const COMPONENTS = [
@@ -33,11 +35,13 @@ const COMPONENTS = [
     ComponentsModule,
     OverlayModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    StorageServiceModule
   ],
   providers: [
     SpinnerOverlayService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent],
   entryComponents: [
