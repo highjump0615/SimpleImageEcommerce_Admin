@@ -6,13 +6,15 @@ import { ProductsComponent } from './products.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import {ComponentsModule} from '../../components/components.module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     ProductsRoutingModule,
     AngularFontAwesomeModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule
   ],
   declarations: [ProductsComponent, ProductDetailComponent]
 })

@@ -8,7 +8,7 @@ import { MainComponent } from './pages/main/main.component';
 import {ComponentsModule} from './components/components.module';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {SpinnerOverlayComponent} from './components/spinner-overlay/spinner-overlay.component';
-import {MatDialogModule, MatProgressSpinnerModule} from '@angular/material';
+import {MatDialogModule, MatProgressSpinnerModule, MatSnackBarModule} from '@angular/material';
 import {SpinnerOverlayService} from 'app/services/spinner-overlay.service';
 import {AuthService} from './services/auth.service';
 import {ErrorDialogComponent} from './components/dialogs/error-dialog/error-dialog.component';
@@ -36,6 +36,7 @@ const COMPONENTS = [
     OverlayModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatSnackBarModule,
     StorageServiceModule
   ],
   providers: [

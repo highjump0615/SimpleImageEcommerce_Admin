@@ -26,8 +26,10 @@
                 type="text"
                 class="form-control form-control-sm"
                 id="ip-title"
+                name="title"
                 required
-                placeholder="Enter title">
+                placeholder="Enter title"
+                [(ngModel)]="title">
             </div>
           </div>
 
@@ -42,8 +44,10 @@
                 type="number"
                 class="form-control form-control-sm"
                 id="ip-price"
+                name="price"
                 required
-                placeholder="Enter price">
+                placeholder="Enter price"
+                [(ngModel)]="price">
             </div>
           </div>
 
@@ -58,8 +62,10 @@
                 class="form-control form-control-sm"
                 id="ip-desc"
                 rows="4"
+                name="desc"
                 required
                 placeholder="Enter description"
+                [(ngModel)]="description"
               ></textarea>
             </div>
           </div>
