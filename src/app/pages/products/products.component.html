@@ -14,7 +14,7 @@
         <!-- add button -->
         <button
           class="btn btn-primary btn-sm"
-          routerLink="/products/new">
+          routerLink="new">
           <fa name="plus"></fa>
           Add New Product
         </button>
@@ -44,6 +44,7 @@
             <tbody>
             <tr
               *ngFor="let p of products; let i = index"
+              routerLink="detail/{{p.id}}"
               (click)="onDetail(i)">
               <td>{{p.title}}</td>
               <td>{{p.desc}}</td>

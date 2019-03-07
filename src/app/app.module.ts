@@ -46,7 +46,8 @@ const COMPONENTS = [
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    ...COMPONENTS
+    ...COMPONENTS,
+    SpinnerOverlayComponent
   ]
 })
 export class AppModule { }

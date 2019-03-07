@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ImageUploaderComponent} from '../../../components/image-uploader/image-uploader.component';
 import {Product} from '../../../models/product';
 import {FirebaseManager} from '../../../helpers/firebase-manager';
 import {BasePage} from '../../base.page';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {SpinnerOverlayService} from '../../../services/spinner-overlay.service';
 
 @Component({
@@ -12,11 +12,15 @@ import {SpinnerOverlayService} from '../../../services/spinner-overlay.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent extends BasePage implements OnInit {
+export class ProductDetailComponent extends BasePage implements OnInit, AfterViewInit {
 
   title = '';
   price: number;
   description = '';
+
+  // empty means add new, else means update
+  productId = '';
+  product: any;
 
   @ViewChild('imagePhoto') uploadPhoto: ImageUploaderComponent;
 
@@ -24,72 +28,116 @@ export class ProductDetailComponent extends BasePage implements OnInit {
     public router: Router,
     public snackbar: MatSnackBar,
     public dialog: MatDialog,
-    private overlay: SpinnerOverlayService
+    private overlay: SpinnerOverlayService,
+    private route: ActivatedRoute
   ) {
     super(dialog);
+
+    // get product id
+    this.productId = route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    // image not selected
-    if (!this.uploadPhoto.picture) {
-      this.snackbar.open(
-        'Image is not selected',
-        null,
-        {
-          duration: 2000
+  ngAfterViewInit() {
+    if (this.productId) {
+      this.overlay.show();
+
+      // fetch product data
+      Product.readFromDatabase(this.productId)
+        .then((data) => {
+          this.product = data;
+
+          // init data
+          this.title = data.title;
+          this.price = data.price;
+          this.description = data.desc;
+
+          this.overlay.hide();
+        })
+        .catch((err) => {
+          this.snackbar.open(
+            err.message,
+            null,
+            {
+              duration: 2000
+            });
+
+          this.overlay.hide();
         });
-
-      return;
     }
+  }
 
-    this.overlay.show();
+  onSubmit() {
 
     //
     // add new product
     //
-    const product = new Product();
+    let p = this.product;
+    if (!p) {
+      // image not selected
+      if (!this.uploadPhoto.picture) {
+        this.snackbar.open(
+          'Image is not selected',
+          null,
+          {
+            duration: 2000
+          });
 
-    product.title = this.title;
-    product.price = this.price;
-    product.desc = this.description;
+        return;
+      }
 
-    product.generateNewId();
+      p = new Product();
+      p.generateNewId();
+    }
 
     //
     // upload image data
     //
-    const path = 'products/' + product.id;
-    FirebaseManager.getInstance().uploadImageTo(
-      path,
-      this.uploadPhoto.picture
-    ).then((url) => {
-      product.imageUrl = url;
+    if (this.uploadPhoto.picture) {
+      this.overlay.show();
 
-      product.saveToDatabase();
+      const path = 'products/' + p.id;
+      FirebaseManager.getInstance().uploadImageTo(
+        path,
+        this.uploadPhoto.picture
+      ).then((url) => {
+        p.imageUrl = url;
+        this.doSaveProduct(p);
 
-      // show success notice
-      this.snackbar.open(
-        'Product added successfully',
-        null,
-        {
-          duration: 2000
-        });
+        this.overlay.hide();
+      }).catch((err) => {
+        // show error alert
+        this.showErrorDialg(
+          'Failed image upload',
+          err.message
+        );
 
-      // go to list page
-      this.router.navigate(['products']);
+        this.overlay.hide();
+      });
+    } else {
+      // image not changed
+      this.doSaveProduct(p);
+    }
+  }
 
-      this.overlay.hide();
-    }).catch((err) => {
-      // show error alert
-      this.showErrorDialg(
-        'Failed image upload',
-        err.message
-      );
+  doSaveProduct(p) {
+    p.title = this.title;
+    p.price = this.price;
+    p.desc = this.description;
 
-      this.overlay.hide();
-    });
+    p.saveToDatabase();
+
+    // show success notice
+    this.snackbar.open(
+      this.productId ? 'Product updated successfully' : 'Product added successfully',
+      null,
+      {
+        duration: 2000
+      });
+
+    // go to list page
+    this.router.navigate(['products']);
   }
 }

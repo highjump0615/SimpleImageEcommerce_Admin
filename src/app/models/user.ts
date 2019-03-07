@@ -54,4 +54,8 @@ export class User extends BaseModel implements Deserializable {
         return Promise.resolve(user);
       });
   }
+
+  tableName() {
+    return User.TABLE_NAME;
+  }
 }

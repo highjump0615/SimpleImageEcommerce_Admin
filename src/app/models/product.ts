@@ -1,5 +1,6 @@
 import {BaseModel, Deserializable} from './base-model';
 import DataSnapshot = firebase.database.DataSnapshot;
+import {FirebaseManager} from '../helpers/firebase-manager';
 
 export class Product extends BaseModel implements Deserializable {
   //
@@ -19,10 +20,6 @@ export class Product extends BaseModel implements Deserializable {
   desc = '';
   imageUrl = '';
 
-  tableName() {
-    return Product.TABLE_NAME;
-  }
-
   constructor(snapshot?: DataSnapshot) {
     super(snapshot);
 
@@ -34,6 +31,26 @@ export class Product extends BaseModel implements Deserializable {
       this.desc = info[Product.FIELD_DESC];
       this.imageUrl = info[Product.FIELD_IMAGE];
     }
+  }
+
+  static readFromDatabase(withId: string): Promise<Product> {
+    const userRef = FirebaseManager.ref()
+      .child(Product.TABLE_NAME)
+      .child(withId);
+
+    return userRef.once('value')
+      .then((snapshot) => {
+        if (!snapshot.exists()) {
+          return Promise.reject(new Error('Product not found'));
+        }
+
+        const product = new Product(snapshot);
+        return Promise.resolve(product);
+      });
+  }
+
+  tableName() {
+    return Product.TABLE_NAME;
   }
 
   toDictionary() {
