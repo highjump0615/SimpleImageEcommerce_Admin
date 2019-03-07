@@ -3,6 +3,7 @@ import 'firebase/database';
 import 'firebase/storage';
 import * as firebase from 'firebase';
 import {environment} from '../../environments/environment';
+import {config} from './config';
 
 export class FirebaseManager {
 
@@ -28,7 +29,7 @@ export class FirebaseManager {
   }
 
   init() {
-    firebase.initializeApp(environment.firebase);
+    firebase.initializeApp(config.firebase);
     this.initServerTime();
   }
 
