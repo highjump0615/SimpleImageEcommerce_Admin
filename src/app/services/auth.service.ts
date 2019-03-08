@@ -24,6 +24,8 @@ export class AuthService {
       return User.readFromDatabase(res.user.uid)
         .then((u) => {
           this.user = u;
+
+          return Promise.resolve();
         });
     });
   }
