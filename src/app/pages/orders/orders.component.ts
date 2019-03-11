@@ -21,9 +21,6 @@ export class OrdersComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    const table: any = $('table');
-    this.dataTable = table.DataTable();
-
     //
     // fetch recipes
     //

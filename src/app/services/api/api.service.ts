@@ -4,6 +4,7 @@ import {Product} from '../../models/product';
 import {BaseModel} from '../../models/base-model';
 import {Order} from '../../models/order';
 import {User} from '../../models/user';
+import {Dashboard} from '../../models/dashboard';
 
 @Injectable()
 export class ApiService {
@@ -90,16 +91,21 @@ export class ApiService {
   /**
    * fetch all orders
    */
-  fetchOrders() {
+  fetchOrders(dateMin?: number) {
     const that = this;
 
     const orders = [];
     const queriesOrderUser = [];
 
-    // fetch products
+    // fetch orders
     const dbRef = FirebaseManager.ref();
 
-    const query: any = dbRef.child(Order.TABLE_NAME);
+    let query: any = dbRef.child(Order.TABLE_NAME);
+
+    if (dateMin) {
+      query = query.orderByChild(BaseModel.FIELD_DATE)
+        .startAt(dateMin);
+    }
 
     return new Promise<Order[]>((resolve, reject) => {
       query.once('value')
@@ -124,5 +130,15 @@ export class ApiService {
             });
         });
     });
+  }
+
+  fetchDashboard() {
+    const dbRef = FirebaseManager.ref();
+    const query: any = dbRef.child(Dashboard.TABLE_NAME);
+
+    return query.once('value')
+      .then((snapshot) => {
+        return Promise.resolve(new Dashboard(snapshot));
+      });
   }
 }

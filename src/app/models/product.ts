@@ -1,6 +1,5 @@
 import {BaseModel, Deserializable} from './base-model';
 import DataSnapshot = firebase.database.DataSnapshot;
-import {FirebaseManager} from '../helpers/firebase-manager';
 
 export class Product extends BaseModel implements Deserializable {
   //

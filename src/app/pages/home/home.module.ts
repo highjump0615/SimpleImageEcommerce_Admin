@@ -10,7 +10,8 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    ComponentsModule
   ],
   declarations: [HomeComponent]
 })

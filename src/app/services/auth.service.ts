@@ -21,12 +21,7 @@ export class AuthService {
         return Promise.reject(new Error('User not found'));
       }
 
-      return User.readFromDatabase(res.user.uid)
-        .then((u) => {
-          this.user = u;
-
-          return Promise.resolve();
-        });
+      return Promise.resolve(res.user.uid);
     });
   }
 
