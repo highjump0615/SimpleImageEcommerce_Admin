@@ -5,7 +5,7 @@ import {BaseDialog} from '../base-dialog';
 @Component({
   selector: 'app-error-dialog',
   templateUrl: './error-dialog.component.html',
-  styleUrls: ['./error-dialog.component.scss']
+  styleUrls: ['../dialog.scss']
 })
 export class ErrorDialogComponent extends BaseDialog implements OnInit {
 
