@@ -6,6 +6,7 @@ import {FirebaseManager} from '../../../helpers/firebase-manager';
 import {BasePage} from '../../base.page';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SpinnerOverlayService} from '../../../services/spinner-overlay.service';
+import {ApiService} from '../../../services/api/api.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -29,7 +30,8 @@ export class ProductDetailComponent extends BasePage implements OnInit, AfterVie
     public snackbar: MatSnackBar,
     public dialog: MatDialog,
     private overlay: SpinnerOverlayService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public api: ApiService
   ) {
     super(dialog);
 
@@ -45,7 +47,7 @@ export class ProductDetailComponent extends BasePage implements OnInit, AfterVie
       this.overlay.show();
 
       // fetch product data
-      Product.readFromDatabase(this.productId)
+      this.api.getProductWithId(this.productId)
         .then((data) => {
           this.product = data;
 

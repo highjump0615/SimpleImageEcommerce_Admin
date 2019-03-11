@@ -33,22 +33,6 @@ export class Product extends BaseModel implements Deserializable {
     }
   }
 
-  static readFromDatabase(withId: string): Promise<Product> {
-    const userRef = FirebaseManager.ref()
-      .child(Product.TABLE_NAME)
-      .child(withId);
-
-    return userRef.once('value')
-      .then((snapshot) => {
-        if (!snapshot.exists()) {
-          return Promise.reject(new Error('Product not found'));
-        }
-
-        const product = new Product(snapshot);
-        return Promise.resolve(product);
-      });
-  }
-
   tableName() {
     return Product.TABLE_NAME;
   }

@@ -16,6 +16,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthGuard} from './guards/auth.guard';
 import {StorageServiceModule} from 'ngx-webstorage-service';
 import {ConfirmDialogComponent} from './components/dialogs/confirm-dialog/confirm-dialog.component';
+import {ApiService} from './services/api/api.service';
 
 
 const COMPONENTS = [
@@ -42,7 +43,8 @@ const COMPONENTS = [
   providers: [
     SpinnerOverlayService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ApiService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

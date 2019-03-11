@@ -2,11 +2,11 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 
 import * as $ from 'jquery';
 import 'datatables.net';
-import {FirebaseManager} from '../../helpers/firebase-manager';
 import {Product} from '../../models/product';
 import {BaseModel} from '../../models/base-model';
 import {BasePage} from '../base.page';
 import {MatDialog} from '@angular/material';
+import {ApiService} from '../../services/api/api.service';
 
 
 @Component({
@@ -22,7 +22,8 @@ export class ProductsComponent extends BasePage implements OnInit, AfterViewInit
   dataTable: any;
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public api: ApiService
   ) {
     super(dialog);
   }
@@ -31,21 +32,9 @@ export class ProductsComponent extends BasePage implements OnInit, AfterViewInit
     //
     // fetch recipes
     //
-    const dbRef = FirebaseManager.ref();
-
-    const that = this;
-
-    const query = dbRef.child(Product.TABLE_NAME);
-
-    query.once('value')
-      .then((snapshot) => {
-        console.log(snapshot);
-
-        snapshot.forEach(function(child) {
-          const p = new Product(child);
-
-          that.products.push(p);
-        });
+    this.api.fetchAllProducts()
+      .then((prods) => {
+        this.products = prods;
 
         // reinit table
         this.initDatatable();
@@ -105,7 +94,7 @@ export class ProductsComponent extends BasePage implements OnInit, AfterViewInit
 
   doRemoveItem(index) {
     // delete from db
-    this.products[index].delete();
+    this.api.deleteFromDb(this.products[index]);
 
     // remove from list
     this.products.splice(index, 1);

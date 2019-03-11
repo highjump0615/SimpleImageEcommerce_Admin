@@ -51,7 +51,7 @@ export class BaseModel {
     }
   }
 
-  private getDatabaseRef(withID?: string, parentID?: string) {
+  public getDatabaseRef(withID?: string, parentID?: string) {
     let strDb = this.tableName();
     if (parentID) {
       strDb += '/' + parentID;
@@ -98,11 +98,6 @@ export class BaseModel {
 
   public equalTo(data: BaseModel) {
     return this.id === data.id;
-  }
-
-  public delete() {
-    const db = this.getDatabaseRef();
-    db.remove();
   }
 
   public clone(): any {
