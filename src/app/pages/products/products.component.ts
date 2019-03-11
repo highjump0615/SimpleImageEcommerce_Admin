@@ -57,6 +57,7 @@ export class ProductsComponent extends BasePage implements OnInit, AfterViewInit
       this.dataTable.destroy();
       this.dataTable = null;
     }
+
     setTimeout(() => {
       const table: any = $('table');
       this.dataTable = table.DataTable({

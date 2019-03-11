@@ -11,7 +11,19 @@
     <div class="card">
       <!-- table -->
       <div class="card-body">
-        <div class="table-responsive">
+
+        <!-- loading -->
+        <div
+          class="dv-loading"
+          *ngIf="loading">
+          <app-spinner-overlay
+            [fullScreen]="false">
+          </app-spinner-overlay>
+        </div>
+
+        <div
+          [hidden]="loading"
+          class="table-responsive">
           <table class="table table-bordered table-sm">
             <thead>
             <tr>
@@ -21,7 +33,12 @@
             </tr>
             </thead>
             <tbody>
-
+            <tr
+              *ngFor="let o of orders; let i = index">
+              <td>{{o.user.username}}</td>
+              <td>{{o.amount}}</td>
+              <td>{{o.createdAtStr()}}</td>
+            </tr>
             </tbody>
           </table>
         </div>

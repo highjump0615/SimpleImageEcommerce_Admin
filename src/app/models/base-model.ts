@@ -1,5 +1,6 @@
 import DataSnapshot = firebase.database.DataSnapshot;
 import {FirebaseManager} from '../helpers/firebase-manager';
+import {Utils} from '../helpers/utils';
 
 
 export interface Deserializable {
@@ -110,5 +111,9 @@ export class BaseModel {
       }
     }
     return cloneObj;
+  }
+
+  public createdAtStr() {
+    return Utils.timeToStringFromat(this.createdAt, 'YYYY-MM-DD HH:mm:ss');
   }
 }
