@@ -33,6 +33,12 @@ const routes: Routes = [
     component: MainComponent,
     loadChildren: './pages/products/products.module#ProductsModule',
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'settings',
+    component: MainComponent,
+    loadChildren: './pages/settings/settings.module#SettingsModule',
+    canActivate: [AuthGuard],
   }
 ];
 

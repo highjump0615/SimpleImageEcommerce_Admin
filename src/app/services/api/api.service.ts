@@ -5,6 +5,7 @@ import {BaseModel} from '../../models/base-model';
 import {Order} from '../../models/order';
 import {User} from '../../models/user';
 import {Dashboard} from '../../models/dashboard';
+import {Setting} from '../../models/setting';
 
 @Injectable()
 export class ApiService {
@@ -139,6 +140,16 @@ export class ApiService {
     return query.once('value')
       .then((snapshot) => {
         return Promise.resolve(new Dashboard(snapshot));
+      });
+  }
+
+  fetchSettings() {
+    const dbRef = FirebaseManager.ref();
+    const query: any = dbRef.child(Setting.TABLE_NAME);
+
+    return query.once('value')
+      .then((snapshot) => {
+        return Promise.resolve(new Setting(snapshot));
       });
   }
 }

@@ -87,6 +87,11 @@ export class BaseModel {
     db.set(this.toDictionary());
   }
 
+  saveToDatabaseWithoutId() {
+    const db = FirebaseManager.ref().child(this.tableName());
+    return db.set(this.toDictionary());
+  }
+
   saveToDatabaseWithField(field: string,
                           value: any,
                           onComplete?: (err: Error | null) => any,
