@@ -56,7 +56,6 @@ Main interfaces for fetching and writing data to database
 |  +-- {userId}
 |     |
 |     +-- {productId}: true
-|     +-- ...
 |    
 +-- dashboard
 |  |
@@ -65,24 +64,23 @@ Main interfaces for fetching and writing data to database
 |
 +-- orders
 |  |
-|  +-- ...
+|  +-- {id}
 |
 +-- products
 |  |
-|  +-- ...
+|  +-- {id}
 |
 +-- purchased
 |  |
 |  +-- {userId}
 |    |
 |    +-- {productId}: {orderId}
-|    +-- ...
 |
 +-- settings
 |
 +-- users
    |
-   +-- ...
+   +-- {id}
 ```
 
 #### 2.3 Code tricks  
