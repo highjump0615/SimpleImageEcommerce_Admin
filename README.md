@@ -51,38 +51,38 @@ Main interfaces for fetching and writing data to database
 ##### 2.2.4 Db structure
 ```
 |
-+- carts
-| |
-| +- {userId}
-|   |
-|   +- {productId}: true
-|   +- ...
++-- carts
+|  |
+|  +-- {userId}
+|     |
+|     +-- {productId}: true
+|     +-- ...
 |    
-+- dashboard
-| |
-| +- order_amount
-| +- order_count
++-- dashboard
+|  |
+|  +-- order_amount
+|  +-- order_count
 |
-+- orders
-| |
-| +- ...
++-- orders
+|  |
+|  +-- ...
 |
-+- products
-| |
-| +- ...
++-- products
+|  |
+|  +-- ...
 |
-+- purchased
-| |
-| +- {userId}
-|   |
-|   +- {productId}: {orderId}
-|   +- ...
++-- purchased
+|  |
+|  +-- {userId}
+|    |
+|    +-- {productId}: {orderId}
+|    +-- ...
 |
-+- settings
++-- settings
 |
-+- users
-  |
-  +- ...
++-- users
+   |
+   +-- ...
 ```
 
 #### 2.3 Code tricks  
