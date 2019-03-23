@@ -4,7 +4,7 @@ Simple Image Ecommerce Admin Panel
 > Angular web; Admin panel of Simple Image Ecommerce mobile app
 
 ## Overview
-Working with [Admin panel](https://github.com/highjump0615/SimpleImageEcommerce_Admin) and [Firebase cloud functions](https://github.com/highjump0615/SimpleImageEcommerce_Cloud)
+Working with [Ionic App](https://github.com/highjump0615/SimpleImageEcommerce) and [Firebase cloud functions](https://github.com/highjump0615/SimpleImageEcommerce_Cloud)
 
 ### 1. Main Features
 - Product management  
